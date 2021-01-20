@@ -99,6 +99,7 @@ public class BallController : MonoBehaviour
         if (!collider.gameObject.CompareTag("Diamond"))
             return;
 
+        GetComponent<AudioSource>().Play();
         Destroy(collider.gameObject);
 
         GameObject particleInstance = Instantiate(particle, collider.gameObject.transform.position, particle.transform.rotation);
