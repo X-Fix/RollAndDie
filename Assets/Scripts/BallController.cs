@@ -7,8 +7,6 @@ public class BallController : MonoBehaviour
 
     private Vector3 velocityX;
     private Vector3 velocityZ;
-    private Vector3 torqueX;
-    private Vector3 torqueZ;
     private Rigidbody rigidBody;
     private ScoreManager scoreManager;
     private GameManager gameManager;
@@ -68,20 +66,16 @@ public class BallController : MonoBehaviour
         velocity = newVelocity;
         velocityX = new Vector3(newVelocity, 0, 0);
         velocityZ = new Vector3(0, 0, newVelocity);
-        torqueX = new Vector3(0, 0, -velocity * 1.3f);
-        torqueZ = new Vector3(velocity * 1.3f, 0, 0);
     }
 
     private void MaintainSpeed()
     {
         if (rigidBody.velocity.z > 0)
         {
-            rigidBody.transform.Rotate(torqueZ);
             rigidBody.velocity = velocityZ;
         }
         else if (rigidBody.velocity.x > 0)
         {
-            rigidBody.transform.Rotate(torqueX);
             rigidBody.velocity = velocityX;
         }
     }
